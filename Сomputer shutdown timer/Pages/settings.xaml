@@ -1,0 +1,149 @@
+﻿<Page x:Class="Сomputer_shutdown_timer.Pages.settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Сomputer_shutdown_timer.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="610" d:DesignWidth="397"
+      Background="White"
+      Title="settings">
+    <Page.Resources>
+        <Style x:Key="Arrow" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FF0022E0"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid SnapsToDevicePixels="True">
+                            <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF1251B7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Name="Backgraund">
+        <Grid Name="Content">
+            <Grid Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="16*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Reducing_number_hours" Grid.Column="0" Style="{StaticResource Arrow}" Cursor="Hand" Click="Reducing_number_hours_Click">
+                    <Image Source="/Image/arrow.png" RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="180"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+                <TextBlock x:Name="Content_hours" Grid.Column="1" Text="00" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button x:Name="Increasing_number_hours" Grid.Column="2" Style="{StaticResource Arrow}" Click="Increasing_number_hours_Click">
+                    <Image Source="/Image/arrow.png"/>
+                </Button>
+            </Grid>
+            <Grid Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="16*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Reducing_number_minute" Grid.Column="0" Style="{StaticResource Arrow}" Click="Reducing_number_minute_Click">
+                    <Image Source="/Image/arrow.png" RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="180"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+                <TextBlock x:Name="Content_minute" Grid.Column="1" Text="00" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button x:Name="Increasing_number_minute" Grid.Column="2" Style="{StaticResource Arrow}" Click="Increasing_number_minute_Click">
+                    <Image Source="/Image/arrow.png"/>
+                </Button>
+            </Grid>
+            <Grid Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="16*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Reducing_number_second" Grid.Column="0" Style="{StaticResource Arrow}" Click="Reducing_number_second_Click">
+                    <Image Source="/Image/arrow.png" RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="180"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+                <TextBlock x:Name="Content_second" Grid.Column="1" Text="00" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button x:Name="Increasing_number_second" Grid.Column="2" Style="{StaticResource Arrow}" Click="Increasing_number_second_Click">
+                    <Image Source="/Image/arrow.png"/>
+                </Button>
+            </Grid>
+            <Grid Width="70" Height="70" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+                <Button x:Name="Return_main_page"  Style="{StaticResource Arrow}" Click="Return_main_page_Click">
+                    <Image Source="/Image/arrow.png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="180"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+            </Grid>
+            <Border Background="Gray" Height="100" VerticalAlignment="Bottom">
+                <TextBlock x:Name="Shutdown_time_text" Text="Ваш комп'ютер вимкнеця о 0:0:0" FontSize="23" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center"/>
+            </Border>
+            <TextBlock Text=" Hours" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="100" Height="38" FontSize="30"/>
+            <TextBlock Text="Minute" HorizontalAlignment="Center" Margin="10,230,0,0" VerticalAlignment="Top" Width="100" Height="38" FontSize="30"/>
+            <TextBlock Text="Second" HorizontalAlignment="Right" Margin="0,230,10,0" VerticalAlignment="Top" Width="100" Height="38" FontSize="30"/>
+            <Grid Width="150" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,400,0,0">
+                <Button x:Name="Save" Style="{StaticResource Arrow}" Content="Зберегти" Click="Save_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
